@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path');
-
+const fs = require('fs');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
@@ -39,14 +39,15 @@ app.get('/api/notes', (req, res) => {
 // });
 // save new note to db.json
 app.post('/api/notes', (req, res) => {
-    const note = req.body;
-    console.log('api push conosle log ' + note);
-    // generate a UUID and attach it to the note
-    note.id = uuidv4();
+    // add uuid to note when saved
+    req.body.id = uuidv4();
+    // push to the array
+    db.push(req.body);
+    fs.writeFileSync(
+        path.join(__dirname, './db/db.json'),
+        JSON.stringify({ db }, null, 2)
+    );
 
-    console.log(note.id);
-
-    db.push(note);
     res.json(db);
 });
 
