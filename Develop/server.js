@@ -51,14 +51,18 @@ app.post('/api/notes', (req, res) => {
 // delete route
 app.delete('/api/notes/:id', (req,res) => {
     const id = req.params.id;
-    const index = db.indexOf(id);
-    // if(index > -1) {
-    //     db.splice(index,1);
-    // }
-    // fs.writeFileSync(__dirname,'./db/db.json');
-    console.log(id);
-    console.log(index);
-    res.json(id);
+    const index = db.findIndex(notes => notes.id === req.params.id);
+
+    if(index > -1) {
+        db.splice(index,1);
+    }
+
+    fs.writeFileSync(
+        path.join(__dirname, './db/db.json'),
+        JSON.stringify( db , null, 2)
+    );
+
+    res.sendStatus(200);
 })
 
 app.listen(PORT, () => {
