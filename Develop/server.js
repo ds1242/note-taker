@@ -25,10 +25,9 @@ app.get('/notes', (req, res) => {
     res.sendFile(path.join(__dirname,'./public/notes.html'));
 });
 
-
+// loads notes from db on page load
 app.get('/api/notes', (req, res) => {
     const note = db;
-    console.log('api get note console log ' + note);
     return res.json(note);
 });
 
@@ -37,7 +36,10 @@ app.get('/api/notes', (req, res) => {
 app.post('/api/notes', (req, res) => {
     const note = req.body;
     console.log('api push conosle log ' + note);
-    res.json(note);
+
+    db.push(note);
+
+    res.json(db);
 
 })
 
