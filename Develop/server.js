@@ -42,10 +42,12 @@ app.post('/api/notes', (req, res) => {
     // add uuid to note when saved
     req.body.id = uuidv4();
     // push to the array
-    db.push(req.body);
+    const newNote = req.body;
+    db.push(newNote);
+    // db.push(req.body);
     fs.writeFileSync(
         path.join(__dirname, './db/db.json'),
-        JSON.stringify({ db }, null, 2)
+        JSON.stringify( db , null, 2)
     );
 
     res.json(db);

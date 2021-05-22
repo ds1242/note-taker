@@ -1,13 +1,16 @@
-{
-  "db": [
-    {
-      "title": "Test Title",
-      "text": "Test text"
-    },
-    {
-      "title": "new note tes",
-      "text": "new note test",
-      "id": "7570dc78-45da-4df4-a3b5-bc346f3f81cf"
-    }
-  ]
-}
+[
+  {
+    "title": "Test Title",
+    "text": "Test text"
+  },
+  {
+    "title": "new note",
+    "text": "new note 2",
+    "id": "b991b8f3-5d1f-4284-8285-a9ac89a285b2"
+  },
+  {
+    "title": "add another note",
+    "text": "note 23",
+    "id": "54936ac5-1267-48a6-91ab-af550803634e"
+  }
+]
