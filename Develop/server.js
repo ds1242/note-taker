@@ -32,11 +32,6 @@ app.get('/api/notes', (req, res) => {
     return res.json(note);
 });
 
-// app.get('/api/notes/:note', (req,res) => {
-//     const result = req.params.db;
-
-//     return res.json(result);
-// });
 // save new note to db.json
 app.post('/api/notes', (req, res) => {
     // add uuid to note when saved
@@ -53,7 +48,18 @@ app.post('/api/notes', (req, res) => {
     res.json(db);
 });
 
-
+// delete route
+app.delete('/api/notes/:id', (req,res) => {
+    const id = req.params.id;
+    const index = db.indexOf(id);
+    // if(index > -1) {
+    //     db.splice(index,1);
+    // }
+    // fs.writeFileSync(__dirname,'./db/db.json');
+    console.log(id);
+    console.log(index);
+    res.json(id);
+})
 
 app.listen(PORT, () => {
     console.log(`API server now on port ${PORT}!`);
